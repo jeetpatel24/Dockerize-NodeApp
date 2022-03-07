@@ -1,0 +1,23 @@
+create a Dockerfile
+Write commands in it
+
+FROM node:14                     // this is about version
+WORKDIR /app                     // now we are creating a docker image and seeting up a directory for it named "app"
+COPY package.json /app           // now copy all the dependencies from package.json to "app"
+RUN npm install                  // it installs all dependencies to run application in "app" folder
+COPY . /app          
+
+
+then write command on terminal -> sudo docker build -t node-docker-tutorial .
+                                  // -t tagging docker image with name => node-docker-tutorial
+next command                   -> sudo docker run -it -p 9000:3000 node-docker-tutorial      
+                                  // -p for port
+                                  // this 9000:3000 is 9000 to 3000 mapping    (port_which_we_want:port_which_is_running)
+
+now hit local:9000 in the browser
+
+now to run docker in detached mode (in background)
+sudo docker run -d -p 9000:3000 node-doker-tutorial      --> to get image id
+
+
+now type -> sudo docker ps // to see running container
